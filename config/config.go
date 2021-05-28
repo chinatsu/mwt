@@ -1,6 +1,9 @@
 package config
 
-import "gopkg.in/go-playground/validator.v9"
+import (
+	log "github.com/sirupsen/logrus"
+	"gopkg.in/go-playground/validator.v9"
+)
 
 const (
 	ASPNETSessionIDName = "ASP.NET_SessionId"
@@ -23,6 +26,7 @@ func DefaultConfig() Config {
 }
 
 func (cfg *Config) Verify() error {
+	log.Trace("Validating config")
 	validate := validator.New()
 	return validate.Struct(cfg)
 }

@@ -1,8 +1,8 @@
 status:
-	go run cmd/main.go --action=status
+	go run cmd/main.go status
 
 out:
-	go run cmd/main.go --action=out
+	go run cmd/main.go out
 
 in:
-	go run cmd/main.go --action=in
+	go run cmd/main.go in

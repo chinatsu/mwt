@@ -1,6 +1,6 @@
 # mwt
 
-MinWinTid but command line 😈
+MinWinTid but on the command line 😈
 
 ## Setup
 
@@ -22,7 +22,7 @@ To get the other fields, select Network in the Inspect area and refresh to popul
 There should be a request named `GetInitialData` or `GetJobAdditionSettings`, these have the POST request payload we need to look at.
 
 To set the variables, running something like `export MRH_SESSION=MRHSession-cookie-value-here` should do the trick.
-Do this for every defined field.
+Do this for every defined field in the table above.
 
 ⚠️ `ASP.NET_SessionId` changes rather often, so things might break and you'll have to update the environment variable to get things going again.
 

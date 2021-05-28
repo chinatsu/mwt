@@ -36,15 +36,16 @@ type Balance struct {
 func GetStatus(cfg config.Config) (string, error) {
 	resp, err := client.Request(cfg, StatusURL)
 	if err != nil {
-		log.Errorf("Making request: %v", err)
 		return "", err
 	}
+	log.Debugf("Successfully retreived %v", StatusURL)
 
 	var status Status
 	if err := json.NewDecoder(resp.Body).Decode(&status); err != nil {
-		log.Errorf("Serializing status: %v", err)
 		return "", err
 	}
+
+	log.Debug("Successfully decoded body")
 
 	var checkInStatus string
 	if len(status.Data.Registrations) > 0 {
@@ -64,6 +65,8 @@ func GetStatus(cfg config.Config) (string, error) {
 			flexiTimeStatus = el.Amount
 		}
 	}
+
+	log.Debug("Returning status")
 
 	return fmt.Sprintf("%v Flexi time according to MinWinTid: %v", checkInStatus, flexiTimeStatus), nil
 }

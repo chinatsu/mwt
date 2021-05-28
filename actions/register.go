@@ -5,6 +5,7 @@ import (
 
 	"github.com/chinatsu/mwt/client"
 	"github.com/chinatsu/mwt/config"
+	log "github.com/sirupsen/logrus"
 )
 
 func CheckOut(cfg config.Config) (string, error) {
@@ -12,6 +13,7 @@ func CheckOut(cfg config.Config) (string, error) {
 	if err != nil {
 		return "", err
 	}
+	log.Debugf("Successfully sent a sign-out request at %v", OutURL)
 
 	if resp.StatusCode != 200 {
 		return "", fmt.Errorf("Http Status: %v", resp.StatusCode)
@@ -24,6 +26,8 @@ func CheckIn(cfg config.Config) (string, error) {
 	if err != nil {
 		return "", err
 	}
+
+	log.Debugf("Successfully sent a sign-in request at %v", InURL)
 
 	if resp.StatusCode != 200 {
 		return "", fmt.Errorf("Http Status: %v", resp.StatusCode)
